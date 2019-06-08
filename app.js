@@ -7,20 +7,15 @@ var spiderToFly = function (spider, fly){
   let flyFromCenter = (parseInt(fly[1],10));
   console.log('The fly\'s distance form center ' +flyFromCenter);
 
-  console.log(spiderFromCenter * spiderFromCenter);
-  console.log(flyFromCenter * flyFromCenter);
+  // console.log((2 * spiderFromCenter * flyFromCenter * Math.cos(angle)));
 
-  console.log((spiderFromCenter * spiderFromCenter) +
-  (flyFromCenter * flyFromCenter));
-
-  console.log((2 * spiderFromCenter * flyFromCenter * Math.cos(angle)));
-
-  distance = (
-    Math.sqrt(
-      (spiderFromCenter * spiderFromCenter) +
-      (flyFromCenter * flyFromCenter) - 
-      (2 * spiderFromCenter * flyFromCenter * Math.cos(angle)))
-  )
+  if (angle == 180) {
+    distance = spiderFromCenter + flyFromCenter;
+  } else {
+    distance = (
+      Math.sqrt(
+        (spiderFromCenter **2 + flyFromCenter **2) - (2 * spiderFromCenter * flyFromCenter * Math.cos((Math.PI * angle) / 180))).toFixed(5));
+    }
   // console.log((2 * spiderFromCenter * flyFromCenter * Math.cos(angle)));
   return distance;
 }
