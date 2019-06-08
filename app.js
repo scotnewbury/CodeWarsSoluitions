@@ -1,22 +1,29 @@
-function rgb( ...args){
-  // complete this function  
-  hex = '';
+var spiderToFly = function (spider, fly){
+  let distance = 0;
+  let angle = (spider.charCodeAt(0) - fly.charCodeAt(0)) *45;
+  console.log('The angle is ' + angle);
+  let spiderFromCenter = (parseInt(spider[1],10));
+  console.log('The spider\'s distance form center ' +spiderFromCenter);
+  let flyFromCenter = (parseInt(fly[1],10));
+  console.log('The fly\'s distance form center ' +flyFromCenter);
 
-  args.forEach (arg => {
-    if (arg < 0) {
-      arg = 0;
-    } else if (arg > 255) {
-      arg = 255;
-    }
+  console.log(spiderFromCenter * spiderFromCenter);
+  console.log(flyFromCenter * flyFromCenter);
 
-    if (arg < 16) {
-      hex += '0';
-    }
-    hex += arg.toString(16).toUpperCase();
-   
-  })
+  console.log((spiderFromCenter * spiderFromCenter) +
+  (flyFromCenter * flyFromCenter));
 
-  return hex;
+  console.log((2 * spiderFromCenter * flyFromCenter * Math.cos(angle)));
+
+  distance = (
+    Math.sqrt(
+      (spiderFromCenter * spiderFromCenter) +
+      (flyFromCenter * flyFromCenter) - 
+      (2 * spiderFromCenter * flyFromCenter * Math.cos(angle)))
+  )
+  // console.log((2 * spiderFromCenter * flyFromCenter * Math.cos(angle)));
+  return distance;
 }
 
-console.log(rgb(300,255,-20));
+console.log(spiderToFly('h3', 'e2'));
+// console.log('h'.charCodeAt(0) - 'e'.charCodeAt(0));
